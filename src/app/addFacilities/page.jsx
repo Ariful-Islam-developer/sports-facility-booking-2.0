@@ -11,6 +11,7 @@ import {
   Button,
 } from "@heroui/react";
 import React from "react";
+import { toast } from "react-toastify";
 
 const addFacilities = () => {
   const onSubmit = async (e) => {
@@ -27,11 +28,12 @@ const addFacilities = () => {
       body: JSON.stringify(destination),
     });
     const result = await res.json();
+    toast.success("Data added within mongodb successfully");
     console.log(result);
   };
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="">
       <h1 className="text-3xl font-bold text-center my-10">
         Add Sports Destination
       </h1>
