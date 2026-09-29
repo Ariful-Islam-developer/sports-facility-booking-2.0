@@ -1,5 +1,6 @@
 import { Button, Card, Chip } from "@heroui/react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { FaRegStar, FaUser } from "react-icons/fa";
 import { FcSportsMode } from "react-icons/fc";
@@ -9,6 +10,7 @@ import { TbCalendarCheck } from "react-icons/tb";
 
 const SportCard = ({ facility }) => {
   const {
+    _id,
     imageUrl,
     price,
     destinationName,
@@ -61,7 +63,9 @@ const SportCard = ({ facility }) => {
                 {available_slots} available
               </h1>
             </div>
-            <Button className="w-full bg-teal-500 ">View Details</Button>
+            <Link href={`/allFacilities/${_id}`}>
+              <Button className="w-full bg-teal-500 ">View Details</Button>
+            </Link>
           </div>
         </div>
       </Card>
