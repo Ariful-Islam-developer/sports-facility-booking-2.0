@@ -38,21 +38,21 @@ const SportBooking = ({ details }) => {
       departureDate: new Date(departureDate),
     };
 
-    console.log(bookData);
+    // console.log(bookData);
 
     // const { data: tokenData } = await authClient.token();
     // console.log(tokenData);
-    // const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //     authorization: `Bearer ${tokenData.token}`,
-    //   },
-    //   body: JSON.stringify(bookData),
-    // });
-    // const data = await res.json();
-    // toast.success("You Booked successfully");
-    // console.log(data);
+    const res = await fetch(`http://localhost:5000/conform`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        // authorization: `Bearer ${tokenData.token}`,
+      },
+      body: JSON.stringify(bookData),
+    });
+    const data = await res.json();
+    toast.success("You Booked successfully");
+    console.log(data);
   };
 
   return (

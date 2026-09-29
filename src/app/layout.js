@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <Navbar></Navbar>
-        <main className="max-w-9/12 mx-auto">{children}</main>
+        <main className="w-9/12 mx-auto">{children}</main>
         <ToastContainer />
       </body>
     </html>
