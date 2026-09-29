@@ -1,7 +1,16 @@
+"use client";
+import { authClient } from "@/lib/auth-client";
+import { ChevronDown } from "@gravity-ui/icons";
+import { Avatar, Button } from "@heroui/react";
 import Link from "next/link";
 import React from "react";
 
+const handleSignOut = async () => {
+  await authClient.signOut();
+};
 const Navbar = () => {
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
   return (
     <div className="border-b-2">
       <div className="flex justify-between items-center py-3 w-11/12 mx-auto">
@@ -24,17 +33,17 @@ const Navbar = () => {
           </li>
         </ul>
 
-        {/* <div className="">
+        <div className="">
           {!user && (
             <ul className="flex items-center text-sm">
               <li>
                 <Button className="mr-4 bg-teal-500">
-                  <Link href={"/registration"}>SignUp</Link>
+                  <Link href={"/signup"}>SignUp</Link>
                 </Button>
               </li>
               <li>
                 <Button className="bg-teal-500">
-                  <Link href={"/login"}>SignIn</Link>
+                  <Link href={"/signin"}>SignIn</Link>
                 </Button>
               </li>
             </ul>
@@ -94,7 +103,7 @@ const Navbar = () => {
               </div>
             </div>
           )}
-        </div> */}
+        </div>
       </div>
     </div>
   );
