@@ -45,7 +45,7 @@ export function EditFacility({ details }) {
   };
   return (
     <Modal>
-      <Button>Edit</Button>
+      <Button className="bg-teal-500 px-10">Edit</Button>
       <Modal.Backdrop>
         <Modal.Container placement="auto">
           <Modal.Dialog className="sm:max-w-lg">
