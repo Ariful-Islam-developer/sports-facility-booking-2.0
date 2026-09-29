@@ -2,9 +2,10 @@ import { Button } from "@heroui/react";
 import Image from "next/image";
 import React from "react";
 import { EditFacility } from "./EditFacility";
+import { DeleteAlert } from "./DeleteAlert";
 
 const DetailsCard = ({ details }) => {
-  console.log(details);
+  // console.log(details);
   const {
     description,
     imageUrl,
@@ -28,7 +29,7 @@ const DetailsCard = ({ details }) => {
         <h1>{destinationName}</h1>
         <p>{description}</p>
         <EditFacility details={details}></EditFacility>
-        <Button>Delete</Button>
+        <DeleteAlert details={details}></DeleteAlert>
         <Button>Conform Booking</Button>
       </div>
     </div>
