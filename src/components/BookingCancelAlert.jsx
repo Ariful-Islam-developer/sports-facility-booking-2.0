@@ -7,13 +7,13 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 export function BookingCancelAlert({ bookingsId }) {
   const handelDelete = async () => {
     console.log(bookingsId, "test");
-    // const { data: tokenData } = await authClient.token();
+    const { data: tokenData } = await authClient.token();
     // console.log(tokenData);
     const res = await fetch(`http://localhost:5000/conform/${bookingsId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
-        //   authorization: `Bearer ${tokenData?.token}`,
+        authorization: `Bearer ${tokenData?.token}`,
       },
     });
     const data = await res.json();

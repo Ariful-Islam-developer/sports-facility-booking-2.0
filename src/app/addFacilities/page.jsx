@@ -1,4 +1,6 @@
 "use client";
+
+import { authClient } from "@/lib/auth-client";
 import {
   Card,
   FieldError,
@@ -10,6 +12,7 @@ import {
   TextArea,
   Button,
 } from "@heroui/react";
+
 import React from "react";
 import { toast } from "react-toastify";
 
@@ -18,12 +21,16 @@ const addFacilities = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const destination = Object.fromEntries(formData.entries());
-    console.log(destination);
+    // console.log(destination);
 
+    const { data: tokenData } = await authClient.token();
+    // console.log(tokenData);
     const res = await fetch("http://localhost:5000/facility", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        // authorization: `Bearer ${tokenData?.token}`,
+        authorization: `Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(destination),
     });
@@ -33,7 +40,7 @@ const addFacilities = () => {
   };
 
   return (
-    <div className="">
+    <div className="max-w-1/2 mx-auto">
       <h1 className="text-3xl font-bold text-center my-10">
         Add Sports Destination
       </h1>

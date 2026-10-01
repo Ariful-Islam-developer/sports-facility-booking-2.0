@@ -43,18 +43,15 @@ const LogInPage = () => {
     });
   };
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="">
       <h1 className="text-3xl font-bold my-5 text-center">
         Login your account
       </h1>
       <h5 className="text-center mb-3 text-teal-900">
         Start your Adventure with Wanderlust
       </h5>
-      <Card className="p-5 border ">
-        <Form
-          onSubmit={onSubmit}
-          className="flex w-96 flex-col gap-4 space-y-5"
-        >
+      <Card className="p-5 border max-w-5/12 mx-auto  ">
+        <Form onSubmit={onSubmit} className="flex  flex-col gap-4 space-y-5">
           <TextField
             isRequired
             name="email"

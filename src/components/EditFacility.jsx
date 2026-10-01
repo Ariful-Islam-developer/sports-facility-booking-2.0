@@ -1,6 +1,7 @@
 "use client";
 
-import { Envelope } from "@gravity-ui/icons";
+import { authClient } from "@/lib/auth-client";
+
 import {
   Button,
   FieldError,
@@ -28,14 +29,19 @@ export function EditFacility({ details }) {
   } = details;
   const onSubmit = async (e) => {
     e.preventDefault();
+    // const { data: tokenData } = await authClient.token();
     const formData = new FormData(e.currentTarget);
     const destination = Object.fromEntries(formData.entries());
-    console.log(destination);
 
+    console.log(destination);
+    const { data: tokenData } = await authClient.token();
+    // console.log(tokenData);
     const res = await fetch(`http://localhost:5000/facility/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
+        // authorization: `Bearer ${tokenData?.token}`,
+        authorization: `Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(destination),
     });
@@ -77,12 +83,12 @@ export function EditFacility({ details }) {
                     {/* Facility Type */}
                     <TextField
                       defaultValue={facilityType}
-                      name="facility-type"
+                      name="facilityType"
                       isRequired
                     >
                       <Label>Facility Type</Label>
                       <Input
-                        placeholder="facility-type"
+                        placeholder="facilityType"
                         className="rounded-2xl"
                       />
                       <FieldError />

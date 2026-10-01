@@ -1,8 +1,18 @@
 import SportCard from "@/components/SportCard";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 import React from "react";
 
 const AllFacilitiesPage = async () => {
-  const res = await fetch("http://localhost:5000/facility");
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+  // console.log(token);
+  const res = await fetch("http://localhost:5000/facility", {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
   const facilities = await res.json();
 
   return (

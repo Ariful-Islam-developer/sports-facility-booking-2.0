@@ -25,6 +25,8 @@ const SportBooking = ({ details }) => {
   } = details;
 
   const handleBooking = async () => {
+    const { data: tokenData } = await authClient.token();
+    // console.log(tokenData, "test");
     const bookData = {
       userId: user?.id,
       userImage: user?.image,
@@ -38,15 +40,11 @@ const SportBooking = ({ details }) => {
       departureDate: new Date(departureDate),
     };
 
-    // console.log(bookData);
-
-    // const { data: tokenData } = await authClient.token();
-    // console.log(tokenData);
     const res = await fetch(`http://localhost:5000/conform`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        // authorization: `Bearer ${tokenData.token}`,
+        authorization: `Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(bookData),
     });

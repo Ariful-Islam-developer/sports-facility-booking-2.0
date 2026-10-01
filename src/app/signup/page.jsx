@@ -42,13 +42,10 @@ const SignUpPage = () => {
     });
   };
   return (
-    <div className=" ">
+    <div className=" max-w-5/12 mx-auto">
       <h1 className="text-3xl font-bold my-5 text-center">Create Account</h1>
       <Card className="p-5 border ">
-        <Form
-          onSubmit={onSubmit}
-          className="flex w-96 flex-col gap-4 space-y-5"
-        >
+        <Form onSubmit={onSubmit} className="flex  flex-col gap-4 space-y-5">
           <TextField isRequired name="name" type="text">
             <Label>Your Name</Label>
             <Input placeholder="Enter Your Name" />
